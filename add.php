@@ -40,6 +40,10 @@ Characters:<br>
 <input type="text" name="chars[]"><br>
 </div>
 <br><input type="button" value="Add Character" onClick="addChar();">
+<br>
+Link:<br>
+<input type="text" name="link">
+<br>
 <br><br><input type="submit" value="Add/Edit">
 </form></center>
 </div>
@@ -61,6 +65,10 @@ function addChar(){
           document.getElementById("characters").appendChild(newdiv);
      }
 </script>
+
+<center><form action="index.php">
+    <input type="submit" value="Back to Start">
+</form></center>
 
 </body>
 </html>

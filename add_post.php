@@ -19,6 +19,7 @@
 	$newstat['Author'] = array_filter($_POST["author"]);
 	$newstat['Arc'] = array_filter($_POST["arc"]);
 	$newstat['Characters'] = array_filter($_POST["chars"]);
+	$newstat['Link'] = $_POST["link"];
 	
 	$ind = (int) ($newstat['Number']/1000);
 	

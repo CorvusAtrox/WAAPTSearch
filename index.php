@@ -20,8 +20,8 @@
 <center><form action="massadd.php">
     <input type="submit" value="Add Many Posts">
 </form></center>
-<center><form action="main.php">
-    <input type="submit" value="Main Thread Posts">
+<center><form action="viewind.php">
+    <input type="submit" value="Look at Posts">
 </form></center>
 
 </body>

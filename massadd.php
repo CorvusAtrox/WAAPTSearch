@@ -42,5 +42,9 @@ function addChar(){
      }
 </script>
 
+<center><form action="index.php">
+    <input type="submit" value="Back to Start">
+</form></center>
+
 </body>
 </html>
