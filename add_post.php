@@ -12,10 +12,6 @@
 <font face="Times New Roman"</font>
 
 <?php 
-	$myfile = fopen("postdata.json", "r") or die("Unable to open file!");
-	$jin = fread($myfile,filesize("postdata.json"));
-	$stats = json_decode($jin, true);
-	//var_dump($stats);
 	
 	$newstat['Thread'] = $_POST["thread"];
 	$newstat['Number'] = $_POST["number"];
@@ -24,40 +20,55 @@
 	$newstat['Arc'] = array_filter($_POST["arc"]);
 	$newstat['Characters'] = array_filter($_POST["chars"]);
 	
-	$key = dupSearch($newstat['Thread'],$newstat['Number'],$stats);
+	$ind = (int) ($newstat['Number']/1000);
 	
-	if($key === null){
-		array_push($stats,array_filter($newstat));
+	if(file_exists("data/".$newstat['Thread'].$ind.".json")){
+		$myfile = fopen("data/".$newstat['Thread'].$ind.".json", "r") or die("Unable to open file!");
+		$jin = fread($myfile,filesize("data/".$newstat['Thread'].$ind.".json"));
+		$stats = json_decode($jin, true);
 	} else {
-		$stats[$key] = $newstat;
+		$stats = array();
 	}
-	//$stats[0] = $newstat;
-
-	$jen = json_encode($stats);
-	//echo $jen;
+	//var_dump($stats);
 	
-	$len = strlen($jen); 
-	$new_json = "";
-    for($c = 0; $c < $len; $c++) 
-    { 
-        $char = $jen[$c];
-		if($c+1 < $len){
-			$nchar = $jen[$c+1];
+	if(isset($_POST['number'])){
+	
+		$key = dupSearch($newstat['Thread'],$newstat['Number'],$stats);
+		
+		if($key === null){
+			array_push($stats,array_filter($newstat));
+		} else {
+			$stats[$key] = $newstat;
 		}
-        switch($nchar) 
-        { 
-            case '{': 
-                $new_json .= $char . "\n";
-                break; 
-            default: 
-                $new_json .= $char; 
-                break;                    
-        } 
-    } 
-	
-	$myfile = fopen("postdata.json", "w") or die("Unable to open file!");
-	fwrite($myfile, $new_json);
-	fclose($myfile);
+		//$stats[0] = $newstat;
+
+		$jen = json_encode($stats);
+		//echo $jen;
+		
+		$len = strlen($jen); 
+		$new_json = "";
+		for($c = 0; $c < $len; $c++) 
+		{ 
+			$char = $jen[$c];
+			if($c+1 < $len){
+				$nchar = $jen[$c+1];
+			}
+			switch($nchar) 
+			{ 
+				case '{': 
+					$new_json .= $char . "\n";
+					break; 
+				default: 
+					$new_json .= $char; 
+					break;                    
+			} 
+		} 
+		
+		$myfile = fopen("data/".$newstat['Thread'].$ind.".json.new", "w") or die("Unable to open file!");
+		fwrite($myfile, $new_json);
+		fclose($myfile);
+		rename("data/".$newstat['Thread'].$ind.".json.new","data/".$newstat['Thread'].$ind.".json");
+	}
 	
 	function dupSearch($t, $n, $arr) {
 		$s = sizeOf($arr);

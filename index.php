@@ -17,6 +17,9 @@
 <center><form action="add.php">
     <input type="submit" value="Add Posts">
 </form></center>
+<center><form action="massadd.php">
+    <input type="submit" value="Add Many Posts">
+</form></center>
 <center><form action="main.php">
     <input type="submit" value="Main Thread Posts">
 </form></center>
