@@ -19,6 +19,10 @@
 	
 	$ind = 0;
 	
+	while(file_exists("data/".$name.($ind+1).".json")){
+		$ind++;
+	}
+	
 	if(file_exists("data/".$name.$ind.".json")){
 		$myfile = fopen("data/".$name.$ind.".json", "r") or die("Unable to open file!");
 		$jin = fread($myfile,filesize("data/".$name.$ind.".json"));
@@ -30,7 +34,7 @@
 	
 	if(isset($_POST['number'])){
 	
-		for($i=1;$i <= $num;$i++){
+		for($i=($ind*1000)+1;$i <= $num;$i++){
 			$key = dupSearch($name,strval($i),$stats);
 		
 			if($key === null){

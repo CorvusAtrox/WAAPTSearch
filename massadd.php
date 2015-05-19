@@ -20,7 +20,7 @@ Thread:<br>
 Number of Posts:<br>
 <input type="text" name="number">
 <br>
-<br><br><input type="submit" value="Add">
+<br><br><input type="submit" value="Allocate">
 </form></center>
 </div>
 
