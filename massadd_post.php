@@ -16,6 +16,7 @@
 	
 	$name = $_POST["thread"];
 	$num = (int) $_POST["number"];
+	$redir = "index.php";
 	
 	$ind = 0;
 	
@@ -133,6 +134,9 @@
 		}
 		return null;
 	}
+	
+	header('Location: '.$redir);
+	die();
 ?>
 
 </div>

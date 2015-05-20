@@ -13,13 +13,24 @@
 
 <?php 
 	
+	$_POST = array_filter($_POST);
 	$newstat['Thread'] = $_POST["thread"];
 	$newstat['Number'] = $_POST["number"];
-	$newstat['Date'] = $_POST["date"];
-	$newstat['Author'] = array_filter($_POST["author"]);
-	$newstat['Arc'] = array_filter($_POST["arc"]);
-	$newstat['Characters'] = array_filter($_POST["chars"]);
-	$newstat['Link'] = $_POST["link"];
+	if($_POST["date"]){
+		$newstat['Date'] = $_POST["date"];
+	}
+	if($_POST["author"]){
+		$newstat['Author'] = array_filter($_POST["author"]);
+	}
+	if($_POST["arc"]){
+		$newstat['Arc'] = array_filter($_POST["arc"]);
+	}
+	if($_POST["chars"]){
+		$newstat['Characters'] = array_filter($_POST["chars"]);
+	}
+	if($_POST["link"]){
+		$newstat['Link'] = $_POST["link"];
+	}
 	$redir = "view.php?thread=".$_POST["thread"]."&number=".$_POST["number"];
 	
 	$ind = (int) ($newstat['Number']/1000);
