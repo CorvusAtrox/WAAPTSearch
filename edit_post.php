@@ -20,6 +20,7 @@
 	$newstat['Arc'] = array_filter($_POST["arc"]);
 	$newstat['Characters'] = array_filter($_POST["chars"]);
 	$newstat['Link'] = $_POST["link"];
+	$redir = "view.php?thread=".$_POST["thread"]."&number=".$_POST["number"];
 	
 	$ind = (int) ($newstat['Number']/1000);
 	
@@ -91,6 +92,9 @@
 		}
 		return null;
 	}
+	
+	header('Location: '.$redir);
+	die();
 ?>
 
 </div>

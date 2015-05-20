@@ -70,34 +70,33 @@
 				echo "<br>";
 			}
 			echo "<br>";
-			if(array_key_exists(($off-1),$stats)){
+			if($num != 1){
 				$link_address = "view.php?thread=".$name."&number=".($num-1);
 				echo "<a href='".$link_address."'>Previous</a>";
 				echo "<br>";
 			}
-			if(array_key_exists(($off+1),$stats)){
-				$link_address = "view.php?thread=".$name."&number=".($num+1);
-				echo "<a href='".$link_address."'>Next</a>";
-				echo "<br>";
-			}
-			if(array_key_exists(($off-25),$stats)){
+			$link_address = "view.php?thread=".$name."&number=".($num+1);
+			echo "<a href='".$link_address."'>Next</a>";
+			echo "<br>";
+			if($num > 25){
 				$link_address = "view.php?thread=".$name."&number=".($num-25);
 				echo "<a href='".$link_address."'>Previous Page</a>";
 				echo "<br>";
 			}
-			if(array_key_exists(($off+25),$stats)){
-				$link_address = "view.php?thread=".$name."&number=".($num+25);
-				echo "<a href='".$link_address."'>Next Page</a>";
-				echo "<br>";
-			}
+			$link_address = "view.php?thread=".$name."&number=".($num+25);
+			echo "<a href='".$link_address."'>Next Page</a>";
+			echo "<br>";
 		} else {
 			echo "Post Number not found";
 		}
 	} else {
 		echo "Data not found. Maybe something was typed incorrectly?";
 	}
+	
+	$edlink = "edit.php?thread=".$name."&number=".$num;
+	
+	echo "<br><a href='".$edlink."'>Edit Data</a>";
 ?>
-
 
 <center><form action="viewind.php">
     <input type="submit" value="Back">

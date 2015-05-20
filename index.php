@@ -14,11 +14,11 @@
 <center><font size = 120%>WAAPT Search</font></center>
 </div>
 
-<center><form action="add.php">
-    <input type="submit" value="Add Posts">
+<center><form action="edit.php">
+    <input type="submit" value="Edit Posts">
 </form></center>
 <center><form action="massadd.php">
-    <input type="submit" value="Add Many Posts">
+    <input type="submit" value="Allocate Posts">
 </form></center>
 <center><form action="viewind.php">
     <input type="submit" value="Look at Posts">
