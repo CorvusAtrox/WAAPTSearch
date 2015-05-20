@@ -14,6 +14,8 @@
 <center><font size = 120%>Search for Posts</font></center>
 
 <center><form action="search_results.php" method="get">
+Character: 
+<input type="text" name="charac">
 <br><input type="submit" value="Search">
 </form></center>
 </div>

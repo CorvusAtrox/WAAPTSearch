@@ -11,8 +11,20 @@
 <body bgcolor="#820BBB" text="000000">
 <font face="Times New Roman"</font>
 
+<center><font size = 120%>Search Results</font></center>
+
+<center><form action="index.php">
+    <input type="submit" value="Back to Start">
+</form></center>
+
+<center><form action="search.php">
+    <input type="submit" value="Back">
+</form></center>
+
 <?php 
 	set_time_limit(0);
+	
+	$charac = $_GET['charac'];
 	
 	$name = "Main";
 	
@@ -30,9 +42,15 @@
 	$i = 1;
 	$off = 0;
 	while(array_key_exists($off,$stats)){
-		if(array_key_exists('Date', $stats[$off])){
+		/*if(array_key_exists('Date', $stats[$off])){
 			$link = "view.php?thread=".$name."&number=".$i;
 			echo "<br><a href='".$link."'>"."$name"." ".$i."</a>";
+		}*/
+		if(array_key_exists('Characters', $stats[$off])){
+			if(in_array($charac,$stats[$off]['Characters'])){
+				$link = "view.php?thread=".$name."&number=".$i;
+				echo "<br><a href='".$link."'>"."$name"." ".$i."</a>";
+			}
 		}
 		//echo $i." ".$off."<br>";
 		if(($i % 1000) == 0){
