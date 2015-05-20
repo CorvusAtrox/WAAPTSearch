@@ -33,13 +33,37 @@
 				echo "Date: ".$stats[$off]['Date']."<br>";
 			}
 			if(array_key_exists('Author', $stats[$off])){
-				echo "Author: ".$stats[$off]['Author'][0]."<br>";
+				$as = sizeof($stats[$off]['Author']);
+				echo "Author: ";
+				for($a = 0; $a < $as; $a++){
+					if($a == $as - 1){
+						echo $stats[$off]['Author'][$a]."<br>";
+					} else {
+						echo $stats[$off]['Author'][$a].", ";
+					}
+				}
 			}
 			if(array_key_exists('Arc', $stats[$off])){
-				echo "Arc: ".$stats[$off]['Arc'][0]."<br>";
+				$rs = sizeof($stats[$off]['Arc']);
+				echo "Arc: ";
+				for($r = 0; $r < $rs; $r++){
+					if($r == $rs - 1){
+						echo $stats[$off]['Arc'][$r]."<br>";
+					} else {
+						echo $stats[$off]['Arc'][$r].", ";
+					}
+				}
 			}
 			if(array_key_exists('Characters', $stats[$off])){
-				echo "Characters: ".$stats[$off]['Characters'][0]."<br>";
+				$cs = sizeof($stats[$off]['Characters']);
+				echo "Characters: ";
+				for($c = 0; $c < $cs; $c++){
+					if($c == $cs - 1){
+						echo $stats[$off]['Characters'][$c]."<br>";
+					} else {
+						echo $stats[$off]['Characters'][$c].", ";
+					}
+				}
 			}
 			if(array_key_exists('Link', $stats[$off])){
 				echo "<a href='".$stats[$off]['Link']."'>Link to Post</a>";
