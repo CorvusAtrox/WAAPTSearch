@@ -13,6 +13,8 @@
 
 <center><font size = 120%>Edit Post Data</font></center>
 
+Note: All dates should be in UTC for now
+
 <?php
 
 $name = "";
@@ -69,7 +71,10 @@ if(isset($_GET["thread"]) && isset($_GET["number"])){
 
 <center><form action="edit_post.php" method="post">
 Thread:<br>
-<input type="text" name="thread" value="<?= $name ?>" />
+<select type="text" name = "thread">
+	<option value="Main"<?php if($name == "Main") echo " selected" ?>>Main</option>
+	<option value="VariousMiniplotsWithSilent" <?php if($name == "VariousMiniplotsWithSilent") echo " selected" ?>>Various Miniplots With Silent</option>
+</select>
 <br>
 Post Number:<br>
 <input type="text" name="number" value="<?= $num ?>" />
