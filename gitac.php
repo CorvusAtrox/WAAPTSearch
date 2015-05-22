@@ -13,6 +13,7 @@
 
 <?php 
 	set_time_limit(0);
+	$redir = "index.php";
 	
 	/*require_once('Git.php');
 	echo $addr = getcwd();
@@ -38,12 +39,11 @@
 	$command1 = "git add data/. -v 2>&1";
 	$command2 = "git commit -m \"Server-side commit\" 2>&1";
 	
-	echo shell_exec($command1);
-	echo "<br><br>";
-	echo shell_exec($command2);
+	shell_exec($command1);
+	shell_exec($command2);
 	
-	/*header('Location: '.$redir);
-	die();*/
+	header('Location: '.$redir);
+	die();
 ?>
 
 </div>
