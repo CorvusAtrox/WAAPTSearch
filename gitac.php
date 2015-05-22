@@ -36,7 +36,7 @@
 	echo shell_exec($change);
 	
 	$command1 = "git add data/. -v 2>&1";
-	$command2 = "git commit -m 'Server-side commit' 2>&1";
+	$command2 = "git commit -m \"Server-side commit\" 2>&1";
 	
 	echo shell_exec($command1);
 	echo "<br><br>";

@@ -1,10 +1,9 @@
 <html>
- <head>
+<head>
 <title>WAAPT Search</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-
 
 <div class="">
 
@@ -29,6 +28,10 @@
 <center><form action="massedit.php">
     <input type="submit" value="Mass Edit Posts">
 </form></center>
+<center><form action="gitac.php">
+    <input type="submit" value="Commit Changes">
+</form></center>
+
 
 </body>
 </html>

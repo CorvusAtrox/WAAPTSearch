@@ -15,7 +15,10 @@
 
 <center><form action="massedit_post.php" method="post">
 Thread:<br>
-<input type="text" name="thread">
+<select type="text" name = "thread">
+	<option value="Main">Main</option>
+	<option value="VariousMiniplotsWithSilent">Various Miniplots With Silent</option>
+</select>
 <br>
 From:<br>
 <input type="text" name="min">
