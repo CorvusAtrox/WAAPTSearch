@@ -26,6 +26,9 @@
 <center><form action="massadd.php">
     <input type="submit" value="Allocate Posts">
 </form></center>
+<center><form action="massedit.php">
+    <input type="submit" value="Mass Edit Posts">
+</form></center>
 
 </body>
 </html>

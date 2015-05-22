@@ -44,7 +44,7 @@
 	}
 	//var_dump($stats);
 	
-	if(isset($_POST['number'])){
+	if(isset($_POST['number']) && isset($_POST['thread'])){
 	
 		$key = dupSearch($newstat['Thread'],$newstat['Number'],$stats);
 		

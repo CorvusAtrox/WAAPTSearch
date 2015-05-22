@@ -13,16 +13,22 @@
 
 <?php 
 	set_time_limit(0);
+	error_reporting(0);
 	
+	$_POST = array_filter($_POST);
 	$name = $_POST["thread"];
-	$num = (int) $_POST["number"];
+	$min = (int) $_POST["min"];
+	$max = (int) $_POST["max"];
+	if($_POST["date"]){
+		$dat = $_POST["date"];
+	}
+	if($_POST["arc"]){
+		$arc = $_POST["arc"];
+	}
 	$redir = "index.php";
 	
-	$ind = 0;
-	
-	while(file_exists("data/".$name.($ind+1).".json")){
-		$ind++;
-	}
+	$ind = (int)(($min-1) / 1000);
+	//echo $ind;
 	
 	if(file_exists("data/".$name.$ind.".json")){
 		$myfile = fopen("data/".$name.$ind.".json", "r") or die("Unable to open file!");
@@ -33,15 +39,18 @@
 	}
 	//var_dump($stats);
 	
-	if(isset($_POST['number']) && isset($_POST['thread'])){
+	if(isset($_POST['min']) && isset($_POST['max']) && isset($_POST['thread'])){
 	
-		for($i=($ind*1000)+1;$i <= $num;$i++){
-			$key = dupSearch($name,strval($i),$stats);
-		
-			if($key === null){
-				array_push($stats,array("Thread"=>$name,"Number"=>strval($i)));
+		for($i=$min;$i <= $max;$i++){
+			$off = ($i-1) % 1000;
+			if($_POST["date"]){
+				$stats[$off]['Date'] = $dat;
 			}
-			
+			if($_POST["arc"]){
+				$as = sizeof($stats[$off]['Arc']);
+				$stats[$off]['Arc'][$as] = $arc;
+				$stats[$off]['Arc'] = array_unique($stats[$off]['Arc']);
+			}
 			if(($i % 1000) == 0){
 				$jen = json_encode($stats);
 				//echo $jen;
@@ -70,7 +79,7 @@
 				fclose($myfile);
 				rename("data/".$name.$ind.".json.new","data/".$name.$ind.".json");
 				
-				if($i < $num){
+				if($i < $max){
 					$ind++;
 					
 					if(file_exists("data/".$name.$ind.".json")){
@@ -112,27 +121,6 @@
 		fclose($myfile);
 		rename("data/".$name.$ind.".json.new","data/".$name.$ind.".json");
 
-	}
-	
-	function dupSearch($t, $n, $arr) {
-		$s = sizeOf($arr);
-		for($i = 0;$i < $s;$i++) {
-			if((strcmp($arr[$i]['Thread'], $t) || strcmp($arr[$i]['Number'], $n)) == null){
-				return $i;
-			}
-			/*echo $arr[$i]['Thread']." ";
-			echo $t." ";
-			echo strcmp($arr[$i]['Thread'], $t);
-			echo "<br>";
-			echo $arr[$i]['Number']." ";
-			echo $n." ";
-			echo strcmp($arr[$i]['Number'], $n);
-			echo "<br>";
-			echo (strcmp($arr[$i]['Thread'], $t) || strcmp($arr[$i]['Number'], $n));
-			echo "<br>";
-			echo "<br>";*/
-		}
-		return null;
 	}
 	
 	header('Location: '.$redir);
