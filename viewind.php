@@ -26,7 +26,7 @@
 
 <div class="">
 
-<body bgcolor="#820BBB" text="000000">
+<body bgcolor="#CE3DFF" text="000000">
 <font face="Times New Roman"</font>
 
 <center><font size = 120%>Look at which post?</font></center>
