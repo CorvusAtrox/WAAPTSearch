@@ -26,47 +26,51 @@
 	
 	$charac = $_GET['charac'];
 	
-	$name = "Main";
+	$name = ["Main","VariousMiniplotsWithSilent"];
+	$ns = sizeof($name);
 	
-	$ind = 0;
+	for($n = 0;$n < $ns; $n++){
 	
-	if(file_exists("data/".$name.$ind.".json")){
-		$myfile = fopen("data/".$name.$ind.".json", "r") or die("Unable to open file!");
-		$jin = fread($myfile,filesize("data/".$name.$ind.".json"));
-		$stats = json_decode($jin, true);
-	} else {
-		$stats = array();
-	}
-	//var_dump($stats);
+		$ind = 0;
 	
-	$i = 1;
-	$off = 0;
-	while(array_key_exists($off,$stats)){
-		/*if(array_key_exists('Date', $stats[$off])){
-			$link = "view.php?thread=".$name."&number=".$i;
-			echo "<br><a href='".$link."'>"."$name"." ".$i."</a>";
-		}*/
-		if(array_key_exists('Characters', $stats[$off])){
-			if(in_array($charac,$stats[$off]['Characters'])){
-				$link = "view.php?thread=".$name."&number=".$i;
+		if(file_exists("data/".$name[$n].$ind.".json")){
+			$myfile = fopen("data/".$name[$n].$ind.".json", "r") or die("Unable to open file!");
+			$jin = fread($myfile,filesize("data/".$name[$n].$ind.".json"));
+			$stats = json_decode($jin, true);
+		} else {
+			$stats = array();
+		}
+		//var_dump($stats);
+		
+		$i = 1;
+		$off = 0;
+		while(array_key_exists($off,$stats)){
+			/*if(array_key_exists('Date', $stats[$off])){
+				$link = "view.php?thread=".$name[$n]."&number=".$i;
 				echo "<br><a href='".$link."'>"."$name"." ".$i."</a>";
+			}*/
+			if(array_key_exists('Characters', $stats[$off])){
+				if(in_array($charac,$stats[$off]['Characters'])){
+					$link = "view.php?thread=".$name[$n]."&number=".$i;
+					echo "<br><a href='".$link."'>"."$name[$n]"." ".$i."</a>";
+				}
 			}
-		}
-		//echo $i." ".$off."<br>";
-		if(($i % 1000) == 0){
-			
-			$ind++;
+			//echo $i." ".$off."<br>";
+			if(($i % 1000) == 0){
 				
-			if(file_exists("data/".$name.$ind.".json")){
-				$myfile = fopen("data/".$name.$ind.".json", "r") or die("Unable to open file!");
-				$jin = fread($myfile,filesize("data/".$name.$ind.".json"));
-				$stats = json_decode($jin, true);
-			} else {
-				$stats = array();
+				$ind++;
+					
+				if(file_exists("data/".$name[$n].$ind.".json")){
+					$myfile = fopen("data/".$name[$n].$ind.".json", "r") or die("Unable to open file!");
+					$jin = fread($myfile,filesize("data/".$name[$n].$ind.".json"));
+					$stats = json_decode($jin, true);
+				} else {
+					$stats = array();
+				}
 			}
+			$i++;
+			$off = ($i-1) % 1000;
 		}
-		$i++;
-		$off = ($i-1) % 1000;
 	}
 ?>
 
