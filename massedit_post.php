@@ -26,6 +26,9 @@
 	if($_POST["arc"]){
 		$arc = $_POST["arc"];
 	}
+	if($_POST["loc"]){
+		$loc = $_POST["loc"];
+	}
 	$redir = "index.php";
 	
 	$ind = (int)(($min-1) / 1000);
@@ -51,6 +54,11 @@
 				$as = sizeof($stats[$off]['Arc']);
 				$stats[$off]['Arc'][$as] = $arc;
 				$stats[$off]['Arc'] = array_unique($stats[$off]['Arc']);
+			}
+			if($_POST["loc"]){
+				$ls = sizeof($stats[$off]['Locations']);
+				$stats[$off]['Locations'][$ls] = $loc;
+				$stats[$off]['Locations'] = array_unique($stats[$off]['Locations']);
 			}
 			if(($i % 1000) == 0){
 				$jen = json_encode($stats);

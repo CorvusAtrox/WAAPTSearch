@@ -143,7 +143,7 @@ Location:<br>
 <br><input type="button" value="Add Location" onClick="addLoc();">
 <br>
 Plot:<br>
-<div id="location">
+<div id="plot">
 <input type="text" name="plot[]" value="<?= $plots[0] ?>" /><br>
 <?php
 	if(file_exists("data/".$name.$ind.".json")){

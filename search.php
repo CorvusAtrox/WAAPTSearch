@@ -21,6 +21,12 @@ Author:
 Arc: 
 <input type="text" name="arc">
 <br>
+Location: 
+<input type="text" name="loc">
+<br>
+Plot: 
+<input type="text" name="plot">
+<br>
 Character: 
 <input type="text" name="charac">
 <br><input type="submit" value="Search">

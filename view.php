@@ -54,6 +54,28 @@
 					}
 				}
 			}
+			if(array_key_exists('Locations', $stats[$off])){
+				$ls = sizeof($stats[$off]['Locations']);
+				echo "Locations: ";
+				for($l = 0; $l < $ls; $l++){
+					if($l == $ls - 1){
+						echo $stats[$off]['Locations'][$l]."<br>";
+					} else {
+						echo $stats[$off]['Locations'][$l].", ";
+					}
+				}
+			}
+			if(array_key_exists('Plots', $stats[$off])){
+				$ps = sizeof($stats[$off]['Plots']);
+				echo "Plots: ";
+				for($p = 0; $p < $ps; $p++){
+					if($p == $ps - 1){
+						echo $stats[$off]['Plots'][$p]."<br>";
+					} else {
+						echo $stats[$off]['Plots'][$p].", ";
+					}
+				}
+			}
 			if(array_key_exists('Characters', $stats[$off])){
 				$cs = sizeof($stats[$off]['Characters']);
 				echo "Characters: ";

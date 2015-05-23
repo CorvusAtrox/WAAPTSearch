@@ -27,6 +27,8 @@
 	$auth = $_GET['auth'];
 	$arc = $_GET['arc'];
 	$charac = $_GET['charac'];
+	$loc = $_GET['loc'];
+	$plot = $_GET['plot'];
 	
 	$name = ["Main","VariousMiniplotsWithSilent"];
 	$ns = sizeof($name);
@@ -40,6 +42,12 @@
 		$cnum++;
 	}
 	if(!(empty($charac))){
+		$cnum++;
+	}
+	if(!(empty($loc))){
+		$cnum++;
+	}
+	if(!(empty($plot))){
 		$cnum++;
 	}
 	
@@ -78,6 +86,18 @@
 			
 			if(!(empty($arc)) && array_key_exists('Arc', $stats[$off])){
 				if(in_array($arc,$stats[$off]['Arc'])){
+					$cs++;
+				}
+			}
+			
+			if(!(empty($loc)) && array_key_exists('Locations', $stats[$off])){
+				if(in_array($loc,$stats[$off]['Locations'])){
+					$cs++;
+				}
+			}
+			
+			if(!(empty($plot)) && array_key_exists('Plots', $stats[$off])){
+				if(in_array($plot,$stats[$off]['Plots'])){
 					$cs++;
 				}
 			}

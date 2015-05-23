@@ -21,12 +21,33 @@
 	}
 	if($_POST["author"]){
 		$newstat['Author'] = array_filter($_POST["author"]);
+		if(empty($newstat['Author'][0])){
+			unset($newstat['Author']);
+		}
 	}
 	if($_POST["arc"]){
 		$newstat['Arc'] = array_filter($_POST["arc"]);
+		if(empty($newstat['Arc'][0])){
+			unset($newstat['Arc']);
+		}
 	}
 	if($_POST["chars"]){
 		$newstat['Characters'] = array_filter($_POST["chars"]);
+		if(empty($newstat['Characters'][0])){
+			unset($newstat['Characters']);
+		}
+	}
+	if($_POST["loc"]){
+		$newstat['Locations'] = array_filter($_POST["loc"]);
+		if(empty($newstat['Locations'][0])){
+			unset($newstat['Locations']);
+		}
+	}
+	if($_POST["plot"]){
+		$newstat['Plots'] = array_filter($_POST["plot"]);
+		if(empty($newstat['Plots'][0])){
+			unset($newstat['Plots']);
+		}
 	}
 	if($_POST["link"]){
 		$newstat['Link'] = $_POST["link"];

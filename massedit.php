@@ -32,6 +32,9 @@ Date (YYYY-MM-DD):<br>
 Arc:<br>
 <input type="text" name="arc">
 <br>
+Location:<br>
+<input type="text" name="loc">
+<br>
 <br><br><input type="submit" value="Edit">
 </form></center>
 </div>
