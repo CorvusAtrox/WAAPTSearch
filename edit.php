@@ -28,7 +28,11 @@ $as = 0;
 $arc = [""];
 $rs = 0;
 $characters = [""];
+$locations = [""];
+$plots = [""];
 $cs = 0;
+$ls = 0;
+$ps = 0;
 
 if(isset($_GET["thread"]) && isset($_GET["number"])){
 	$name = $_GET["thread"];
@@ -62,11 +66,23 @@ if(isset($_GET["thread"]) && isset($_GET["number"])){
 				$characters[$c] = $stats[$off]['Characters'][$c];
 			}
 		}
+		if(array_key_exists('Locations', $stats[$off])){
+			$ls = sizeof($stats[$off]['Locations']);
+			for($l = 0; $l < $ls; $l++){
+				$locations[$l] = $stats[$off]['Locations'][$l];
+			}
+		}
+		if(array_key_exists('Plots', $stats[$off])){
+			$ps = sizeof($stats[$off]['Plots']);
+			for($p = 0; $p < $ps; $p++){
+				$plots[$p] = $stats[$off]['Plots'][$p];
+			}
+		}
 		if(array_key_exists('Link', $stats[$off])){
 			$link = $stats[$off]['Link'];
 		}
 		if(array_key_exists('Text', $stats[$off])){
-			$link = $stats[$off]['Text'];
+			$text = $stats[$off]['Text'];
 		}
 	}
 }
@@ -111,6 +127,34 @@ Arc:<br>
 ?>
 </div>
 <br><input type="button" value="Add Arc" onClick="addArc();">
+<br>
+Location:<br>
+<div id="location">
+<input type="text" name="loc[]" value="<?= $locations[0] ?>" /><br>
+<?php
+	if(file_exists("data/".$name.$ind.".json")){
+		//$cs = sizeof($stats[$off]['Characters']);
+		for($l = 1; $l < $ls; $l++){
+			echo "<input type='text' name='loc[]' value=$locations[$l] /><br>";
+		}
+	}
+?>
+</div>
+<br><input type="button" value="Add Location" onClick="addLoc();">
+<br>
+Plot:<br>
+<div id="location">
+<input type="text" name="plot[]" value="<?= $plots[0] ?>" /><br>
+<?php
+	if(file_exists("data/".$name.$ind.".json")){
+		//$cs = sizeof($stats[$off]['Characters']);
+		for($p = 1; $p < $ps; $p++){
+			echo "<input type='text' name='plot[]' value=$plots[$p] /><br>";
+		}
+	}
+?>
+</div>
+<br><input type="button" value="Add Plot" onClick="addPlot();">
 <br>
 Characters:<br>
 <div id="characters">

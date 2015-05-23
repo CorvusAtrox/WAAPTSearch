@@ -69,10 +69,10 @@
 				echo "<a href='".$stats[$off]['Link']."'>Link to Post</a>";
 				echo "<br>";
 			}
-			echo "<br>";
+			/*echo "<br>";
 			if(array_key_exists('Text', $stats[$off])){
 				echo "Text:<br>".$stats[$off]['Text']."<br>";
-			}
+			}*/
 			echo "<br>";
 			if($num != 1){
 				$link_address = "view.php?thread=".$name."&number=".($num-1);
