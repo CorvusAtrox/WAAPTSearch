@@ -13,15 +13,30 @@
 
 <center><font size = 120%>How Many Posts Does the Thread Have?</font></center>
 
+<?php
+
+	if(empty($_GET["thread"])){
+		$name = "Main";
+	} else {
+		$name = $_GET["thread"];
+	}
+
+?>
+
 <center><form action="massadd_post.php" method="post">
 Thread:<br>
-<select type="text" name = "thread">
-	<?php 
-		$lines = file("threadlist.txt", FILE_IGNORE_NEW_LINES);
-		foreach($lines as $thread)
-		echo "<option value=\"".$thread."\">".$thread."</option>";
-	?>
-</select>
+		<select type="text" name = "thread">
+		<?php
+			$lines = file("threadlist.txt", FILE_IGNORE_NEW_LINES);
+			foreach($lines as $thread){
+				if($name == $thread){
+					echo "<option value=\"".$thread."\" selected>".$thread."</option>";
+				} else {
+					echo "<option value=\"".$thread."\">".$thread."</option>";
+				}
+			}
+		?>
+		</select>
 <br>
 Number of Posts:<br>
 <input type="text" name="number">

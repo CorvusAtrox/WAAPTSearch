@@ -76,7 +76,8 @@
 			$redir = "view.php?thread=".$_POST["thread"]."&number=1";
 		} else {
 			$stats[$key] = $newstat;
-			$redir = "view.php?thread=".$_POST["thread"]."&number=".$_POST["number"];
+			$page = (int)(($_POST["number"] - 1) / 25);
+			$redir = "view.php?thread=".$_POST["thread"]."&number=".$page;
 		}
 		//$stats[0] = $newstat;
 
