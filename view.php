@@ -36,7 +36,7 @@
     width:100%;
 	position: relative;
     left: 0px;
-	top: 20px;
+	top: -25px;
 	height:80px;
 	border-radius: 25px;
     border: 2px solid #008000;
@@ -177,6 +177,7 @@
 				$num = ($page - 1)*25 + 1;
 				$off = ($num-1)%1000;
 				for($it = 1;($it <= 25 && array_key_exists(($off),$stats));$it++){ ?>
+					<br>
 					<div id="post">
 					<?php
 						$num = ($page - 1)*25 + $it;
