@@ -22,6 +22,7 @@ $num = "";
 $date = "";
 $ind = -1;
 $link = "";
+$text = "";
 $author = [""];
 $as = 0;
 $arc = [""];
@@ -63,6 +64,9 @@ if(isset($_GET["thread"]) && isset($_GET["number"])){
 		}
 		if(array_key_exists('Link', $stats[$off])){
 			$link = $stats[$off]['Link'];
+		}
+		if(array_key_exists('Text', $stats[$off])){
+			$link = $stats[$off]['Text'];
 		}
 	}
 }
@@ -124,6 +128,9 @@ Characters:<br>
 <br>
 Link:<br>
 <input type="text" name="link" value="<?= $link ?>" />
+<br>
+Text:<br>
+<input type="text" name="text" value="<?= $text ?>" />
 <br>
 <br><br><input type="submit" value="Edit">
 </form></center>

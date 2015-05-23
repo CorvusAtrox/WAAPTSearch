@@ -24,14 +24,29 @@
 <?php 
 	set_time_limit(0);
 	
+	$auth = $_GET['auth'];
+	$arc = $_GET['arc'];
 	$charac = $_GET['charac'];
 	
 	$name = ["Main","VariousMiniplotsWithSilent"];
 	$ns = sizeof($name);
 	
+	$cnum = 0;
+	
+	if(!(empty($auth))){
+		$cnum++;
+	}
+	if(!(empty($arc))){
+		$cnum++;
+	}
+	if(!(empty($charac))){
+		$cnum++;
+	}
+	
 	for($n = 0;$n < $ns; $n++){
 	
 		$ind = 0;
+		$cs = 0;
 	
 		if(file_exists("data/".$name[$n].$ind.".json")){
 			$myfile = fopen("data/".$name[$n].$ind.".json", "r") or die("Unable to open file!");
@@ -49,12 +64,31 @@
 				$link = "view.php?thread=".$name[$n]."&number=".$i;
 				echo "<br><a href='".$link."'>"."$name"." ".$i."</a>";
 			}*/
-			if(array_key_exists('Characters', $stats[$off])){
+			if(!(empty($charac)) && array_key_exists('Characters', $stats[$off])){
 				if(in_array($charac,$stats[$off]['Characters'])){
-					$link = "view.php?thread=".$name[$n]."&number=".$i;
-					echo "<br><a href='".$link."'>"."$name[$n]"." ".$i."</a>";
+					$cs++;
 				}
 			}
+			
+			if(!(empty($auth)) && array_key_exists('Author', $stats[$off])){
+				if(in_array($auth,$stats[$off]['Author'])){
+					$cs++;
+				}
+			}
+			
+			if(!(empty($arc)) && array_key_exists('Arc', $stats[$off])){
+				if(in_array($arc,$stats[$off]['Arc'])){
+					$cs++;
+				}
+			}
+			
+			if($cs == $cnum){
+				$link = "view.php?thread=".$name[$n]."&number=".$i;
+				echo "<br><a href='".$link."'>"."$name[$n]"." ".$i."</a>";
+			}
+			
+			$cs = 0;
+			
 			//echo $i." ".$off."<br>";
 			if(($i % 1000) == 0){
 				

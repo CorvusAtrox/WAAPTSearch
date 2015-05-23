@@ -14,6 +14,13 @@
 <center><font size = 120%>Search for Posts</font></center>
 
 <center><form action="search_results.php" method="get">
+<br>
+Author: 
+<input type="text" name="auth">
+<br>
+Arc: 
+<input type="text" name="arc">
+<br>
 Character: 
 <input type="text" name="charac">
 <br><input type="submit" value="Search">

@@ -31,6 +31,9 @@
 	if($_POST["link"]){
 		$newstat['Link'] = $_POST["link"];
 	}
+	if($_POST["text"]){
+		$newstat['Text'] = $_POST["text"];
+	}
 	$redir = "view.php?thread=".$_POST["thread"]."&number=".$_POST["number"];
 	
 	$ind = (int) ($newstat['Number']/1000);
