@@ -11,7 +11,7 @@
 <body bgcolor="#CE3DFF" text="000000">
 <font face="Times New Roman"</font>
 
-<center><font size = 120%>Mass Add Posts</font></center>
+<center><font size = 120%>How Many Posts Does the Thread Have?</font></center>
 
 <center><form action="massadd_post.php" method="post">
 Thread:<br>
@@ -26,7 +26,7 @@ Thread:<br>
 Number of Posts:<br>
 <input type="text" name="number">
 <br>
-<br><br><input type="submit" value="Allocate">
+<br><br><input type="submit" value="Add if Needed">
 </form></center>
 </div>
 

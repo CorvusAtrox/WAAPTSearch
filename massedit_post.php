@@ -32,6 +32,7 @@
 	$redir = "index.php";
 	
 	$ind = (int)(($min-1) / 1000);
+	$off = 0;
 	//echo $ind;
 	
 	if(file_exists("data/".$name.$ind.".json")){
@@ -45,7 +46,7 @@
 	
 	if(isset($_POST['min']) && isset($_POST['max']) && isset($_POST['thread'])){
 	
-		for($i=$min;$i <= $max;$i++){
+		for($i=$min;($i <= $max && array_key_exists($off,$stats));$i++){
 			$off = ($i-1) % 1000;
 			if($_POST["date"]){
 				$stats[$off]['Date'] = $dat;

@@ -42,7 +42,7 @@ Thread:<br>
 </select>
 <br>
 Number:<br>
-<input type="text" name="number">
+<input type="text" name="number" value = 1>
 <!--<br>
 Timezone:<br>
 	<select type="text" name = "tz">

@@ -55,7 +55,6 @@
 	if($_POST["text"]){
 		$newstat['Text'] = $_POST["text"];
 	}
-	$redir = "view.php?thread=".$_POST["thread"]."&number=".$_POST["number"];
 	
 	$ind = (int) ($newstat['Number']/1000);
 	
@@ -73,9 +72,11 @@
 		$key = dupSearch($newstat['Thread'],$newstat['Number'],$stats);
 		
 		if($key === null){
-			array_push($stats,array_filter($newstat));
+			//array_push($stats,array_filter($newstat));
+			$redir = "view.php?thread=".$_POST["thread"]."&number=1";
 		} else {
 			$stats[$key] = $newstat;
+			$redir = "view.php?thread=".$_POST["thread"]."&number=".$_POST["number"];
 		}
 		//$stats[0] = $newstat;
 

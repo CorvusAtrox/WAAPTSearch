@@ -2,6 +2,37 @@
  <head>
 <title>WAAPT Search</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
+<style>
+#header {
+    text-align:center;
+    width:33.3%;
+	position: absolute;
+    left: 33.3%;
+    top: 0px;
+}
+#prev {
+    text-align:center;
+    width:33.3%;
+	position: absolute;
+    left: 0px;
+    top: 75px;
+}
+#next {
+    text-align:center;
+    width:33.3%;
+	position: absolute;
+    left: 66.6%;
+    top: 75px;
+}
+#posts {
+	text-align:center;
+    width:100%;
+	position: absolute;
+    left: 0px;
+    top: 200px;
+	background-color: #6495ed;
+}
+</style>
 </head>
 <body>
 
@@ -13,8 +44,17 @@
 </div>
 
 <?php
-	$name = $_GET["thread"];
-	$num = $_GET["number"];
+	
+	if(empty($_GET["thread"])){
+		$name = "Main";
+	} else {
+		$name = $_GET["thread"];
+	}
+	if(empty($_GET["number"])){
+		$num = 1;
+	} else {
+		$num = $_GET["number"];
+	}
 	
 	$ind = (int) (($num-1)/1000);
 	$off = ($num - 1) % 1000;
@@ -23,11 +63,49 @@
 	if(file_exists("data/".$name.$ind.".json")){
 		$myfile = fopen("data/".$name.$ind.".json", "r") or die("Unable to open file!");
 		$jin = fread($myfile,filesize("data/".$name.$ind.".json"));
-		$stats = json_decode($jin, true);
-		//print_r($stats[$off]);
-		if(array_key_exists($off,$stats)){
-			echo "Thread: ".$name."<br>";
-			echo "Page: ".$page."<br>";
+		$stats = json_decode($jin, true);?>
+		<div id="header">
+			<center><form action="view.php" method="get">
+			Thread:<br>
+			<select type="text" name = "thread">
+			<?php
+				$lines = file("threadlist.txt", FILE_IGNORE_NEW_LINES);
+				foreach($lines as $thread){
+					if($name == $thread){
+						echo "<option value=\"".$thread."\" selected>".$thread."</option>";
+					} else {
+						echo "<option value=\"".$thread."\">".$thread."</option>";
+					}
+				}
+			?>
+			</select>
+			<br>
+			Number:<br>
+			<input type="text" name="number" value="<?= $num ?>" />
+			<br><br><input type="submit" value="Go To">
+			</form></center>
+			<center><form action="index.php">
+				<input type="submit" value="Back to Start">
+			</form></center>
+			</div>
+			<div id="prev">
+			<?php if($num > 25){
+				$link_address = "view.php?thread=".$name."&number=".($num-25);
+				echo "<a href='".$link_address."'>Previous Page</a>";
+				echo "<br>";
+			} ?>
+			</div>
+			<div id="next">
+			<?php
+				$link_address = "view.php?thread=".$name."&number=".($num+25);
+				echo "<a href='".$link_address."'>Next Page</a>";
+				echo "<br>";
+			 ?>
+			</div>
+			<div id="posts">
+		<?php
+		if(array_key_exists($off,$stats)){?>
+			<?php
 			echo "Number: ".$num."<br>";
 			if(array_key_exists('Date', $stats[$off])){
 				echo "Date: ".$stats[$off]['Date']."<br>";
@@ -96,22 +174,6 @@
 				echo "Text:<br>".$stats[$off]['Text']."<br>";
 			}*/
 			echo "<br>";
-			if($num != 1){
-				$link_address = "view.php?thread=".$name."&number=".($num-1);
-				echo "<a href='".$link_address."'>Previous</a>";
-				echo "<br>";
-			}
-			$link_address = "view.php?thread=".$name."&number=".($num+1);
-			echo "<a href='".$link_address."'>Next</a>";
-			echo "<br>";
-			if($num > 25){
-				$link_address = "view.php?thread=".$name."&number=".($num-25);
-				echo "<a href='".$link_address."'>Previous Page</a>";
-				echo "<br>";
-			}
-			$link_address = "view.php?thread=".$name."&number=".($num+25);
-			echo "<a href='".$link_address."'>Next Page</a>";
-			echo "<br>";
 		} else {
 			echo "Post Number not found";
 		}
@@ -123,13 +185,6 @@
 	
 	echo "<br><a href='".$edlink."'>Edit Data</a>";
 ?>
-
-<center><form action="viewind.php">
-    <input type="submit" value="Back">
-</form></center>
-<center><form action="index.php">
-    <input type="submit" value="Back to Start">
-</form></center>
 
 </body>
 </html>
