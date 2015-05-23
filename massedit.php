@@ -26,7 +26,7 @@ From:<br>
 To:<br>
 <input type="text" name="max">
 <br>
-Date:<br>
+Date (YYYY-MM-DD):<br>
 <input type="text" name="date">
 <br>
 Arc:<br>
