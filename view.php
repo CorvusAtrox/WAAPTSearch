@@ -39,7 +39,7 @@
 	top: 20px;
 	height:80px;
 	border-radius: 25px;
-    border: 2px solid #8AC007;
+    border: 2px solid #008000;
 }
 #number {
 	text-align:center;
