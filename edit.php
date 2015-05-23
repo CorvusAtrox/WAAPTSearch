@@ -92,8 +92,18 @@ if(isset($_GET["thread"]) && isset($_GET["number"])){
 <center><form action="edit_post.php" method="post">
 Thread:<br>
 <select type="text" name = "thread">
-	<option value="Main"<?php if($name == "Main") echo " selected" ?>>Main</option>
-	<option value="VariousMiniplotsWithSilent" <?php if($name == "VariousMiniplotsWithSilent") echo " selected" ?>>Various Miniplots With Silent</option>
+	<!--<option value="Main"<?php if($name == "Main") echo " selected" ?>>Main</option>
+	<option value="VariousMiniplotsWithSilent" <?php if($name == "VariousMiniplotsWithSilent") echo " selected" ?>>Various Miniplots With Silent</option>-->
+	<?php 
+		$lines = file("threadlist.txt", FILE_IGNORE_NEW_LINES);
+		foreach($lines as $thread){
+			if($name == $thread){
+				echo "<option value=\"".$thread."\" selected>".$thread."</option>";
+			} else {
+				echo "<option value=\"".$thread."\">".$thread."</option>";
+			}
+		}
+	?>
 </select>
 <br>
 Post Number:<br>
@@ -195,6 +205,16 @@ function addChar(){
           var newdiv = document.createElement('div');
           newdiv.innerHTML = "<input type='text' name='chars[]'><br>";
           document.getElementById("characters").appendChild(newdiv);
+     }
+function addLoc(){
+          var newdiv = document.createElement('div');
+          newdiv.innerHTML = "<input type='text' name='loc[]'><br>";
+          document.getElementById("location").appendChild(newdiv);
+     }
+function addPlot(){
+          var newdiv = document.createElement('div');
+          newdiv.innerHTML = "<input type='text' name='plot[]'><br>";
+          document.getElementById("plot").appendChild(newdiv);
      }
 </script>
 

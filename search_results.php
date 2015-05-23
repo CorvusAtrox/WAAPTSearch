@@ -30,7 +30,7 @@
 	$loc = $_GET['loc'];
 	$plot = $_GET['plot'];
 	
-	$name = ["Main","VariousMiniplotsWithSilent"];
+	$name = file("threadlist.txt", FILE_IGNORE_NEW_LINES);
 	$ns = sizeof($name);
 	
 	$cnum = 0;

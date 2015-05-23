@@ -16,8 +16,11 @@
 <center><form action="massedit_post.php" method="post">
 Thread:<br>
 <select type="text" name = "thread">
-	<option value="Main">Main</option>
-	<option value="VariousMiniplotsWithSilent">Various Miniplots With Silent</option>
+	<?php 
+		$lines = file("threadlist.txt", FILE_IGNORE_NEW_LINES);
+		foreach($lines as $thread)
+		echo "<option value=\"".$thread."\">".$thread."</option>";
+	?>
 </select>
 <br>
 From:<br>
