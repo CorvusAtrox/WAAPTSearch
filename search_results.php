@@ -103,7 +103,8 @@
 			}
 			
 			if($cs == $cnum){
-				$link = "view.php?thread=".$name[$n]."&number=".$i;
+				$pa = (int)(($i - 1) / 25)+1;
+				$link = "view.php?thread=".$name[$n]."&page=".$pa;
 				echo "<br><a href='".$link."'>"."$name[$n]"." ".$i."</a>";
 			}
 			
