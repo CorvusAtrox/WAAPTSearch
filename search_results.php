@@ -33,6 +33,8 @@
 	$name = file("threadlist.txt", FILE_IGNORE_NEW_LINES);
 	$ns = sizeof($name);
 	
+	$count = 0;
+	
 	$cnum = 0;
 	
 	if(!(empty($auth))){
@@ -80,6 +82,7 @@
 			
 			if(!(empty($auth)) && array_key_exists('Author', $stats[$off])){
 				if(in_array($auth,$stats[$off]['Author'])){
+				
 					$cs++;
 				}
 			}
@@ -106,6 +109,7 @@
 				$pa = (int)(($i - 1) / 25)+1;
 				$link = "view.php?thread=".$name[$n]."&page=".$pa;
 				echo "<br><a href='".$link."'>"."$name[$n]"." ".$i."</a>";
+				$count++;
 			}
 			
 			$cs = 0;
@@ -127,6 +131,8 @@
 			$off = ($i-1) % 1000;
 		}
 	}
+	
+	echo "<br>Results: ".$count;
 ?>
 
 </div>
