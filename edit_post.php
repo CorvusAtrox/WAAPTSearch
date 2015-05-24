@@ -69,7 +69,7 @@
 	
 	if(isset($_POST['number']) && isset($_POST['thread'])){
 	
-		$off = ($newstat["Number"]-1)%1000;;
+		$off = ($newstat["Number"]-1)%1000;
 		
 		if(array_key_exists(($off),$stats))){
 			//array_push($stats,array_filter($newstat));
