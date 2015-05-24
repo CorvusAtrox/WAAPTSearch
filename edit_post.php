@@ -56,7 +56,7 @@
 		$newstat['Text'] = $_POST["text"];
 	}
 	
-	$ind = (int) ($newstat['Number']/1000);
+	$ind = (int) (($newstat['Number']-1)/1000);
 	
 	if(file_exists("data/".$newstat['Thread'].$ind.".json")){
 		$myfile = fopen("data/".$newstat['Thread'].$ind.".json", "r") or die("Unable to open file!");
@@ -69,15 +69,15 @@
 	
 	if(isset($_POST['number']) && isset($_POST['thread'])){
 	
-		$off = ($newstat["Number"]-1)%1000;
+		$key = dupSearch($newstat['Thread'],$newstat['Number'],$stats);
 		
-		if(array_key_exists(($off),$stats))){
+		if($key === null){
 			//array_push($stats,array_filter($newstat));
-			$stats[$off] = $newstat;
+			$redir = "view.php?thread=".$_POST["thread"]."&page=1";
+		} else {
+			$stats[$key] = $newstat;
 			$page = (int)(($_POST["number"] - 1) / 25)+1;
 			$redir = "view.php?thread=".$_POST["thread"]."&page=".$page;
-		} else {
-			$redir = "view.php?thread=".$_POST["thread"]."&page=1";
 		}
 		//$stats[0] = $newstat;
 
