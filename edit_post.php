@@ -69,15 +69,15 @@
 	
 	if(isset($_POST['number']) && isset($_POST['thread'])){
 	
-		$key = dupSearch($newstat['Thread'],$newstat['Number'],$stats);
+		$off = ($newstat["Number"]-1)%1000;;
 		
-		if($key === null){
+		if(array_key_exists(($off),$stats))){
 			//array_push($stats,array_filter($newstat));
-			$redir = "view.php?thread=".$_POST["thread"]."&page=1";
-		} else {
-			$stats[$key] = $newstat;
+			$stats[$off] = $newstat;
 			$page = (int)(($_POST["number"] - 1) / 25)+1;
 			$redir = "view.php?thread=".$_POST["thread"]."&page=".$page;
+		} else {
+			$redir = "view.php?thread=".$_POST["thread"]."&page=1";
 		}
 		//$stats[0] = $newstat;
 
