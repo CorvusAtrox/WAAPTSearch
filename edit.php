@@ -118,7 +118,7 @@ Author:<br>
 <?php
 	if(file_exists("data/".$name.$ind.".json")){
 		for($a = 1; $a < $as; $a++){
-			echo "<input type='text' name='author[]' value=$author[$a] /><br>";
+			echo '<input type="text" name="author[]" value="' . $authors[$a] . '"  /><br>';
 		}
 	}
 ?>
@@ -131,7 +131,7 @@ Arc:<br>
 <?php
 	if(file_exists("data/".$name.$ind.".json")){
 		for($r = 1; $r < $rs; $r++){
-			echo "<input type='text' name='arc[]' value=$arc[$r] /><br>";
+			echo '<input type="text" name="arc[]" value="' . $arc[$r] . '"  /><br>';
 		}
 	}
 ?>
@@ -145,7 +145,7 @@ Location:<br>
 	if(file_exists("data/".$name.$ind.".json")){
 		//$cs = sizeof($stats[$off]['Characters']);
 		for($l = 1; $l < $ls; $l++){
-			echo "<input type='text' name='loc[]' value=$locations[$l] /><br>";
+			echo '<input type="text" name="loc[]" value="' . $locations[$l] . '"  /><br>';
 		}
 	}
 ?>
@@ -159,7 +159,7 @@ Plot:<br>
 	if(file_exists("data/".$name.$ind.".json")){
 		//$cs = sizeof($stats[$off]['Characters']);
 		for($p = 1; $p < $ps; $p++){
-			echo "<input type='text' name='plot[]' value=$plots[$p] /><br>";
+			echo '<input type="text" name="plot[]" value="' . $plots[$p] . '"  /><br>';
 		}
 	}
 ?>
@@ -173,7 +173,7 @@ Characters:<br>
 	if(file_exists("data/".$name.$ind.".json")){
 		//$cs = sizeof($stats[$off]['Characters']);
 		for($c = 1; $c < $cs; $c++){
-			echo "<input type='text' name='chars[]' value=$characters[$c] /><br>";
+			echo '<input type="text" name="chars[]" value="' . $characters[$c] . '"  /><br>';
 		}
 	}
 ?>
