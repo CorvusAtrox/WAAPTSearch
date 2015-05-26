@@ -149,7 +149,7 @@ Author:<br>
 <?php
 	if(file_exists("data/".$name.$ind.".json")){
 		for($a = 1; $a < $as; $a++){
-			echo '<input type="text" name="author[]" value="' . $authors[$a] . '"  /><br>';
+			echo '<input type="text" name="author[]" value="' . $author[$a] . '"  /><br>';
 		}
 	}
 ?>
