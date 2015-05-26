@@ -195,8 +195,12 @@
 						<div id="date">
 						<?php
 						if(array_key_exists('Date', $stats[$off])){
-							echo "Date: ".$stats[$off]['Date']."<br>";
-						} ?>
+							echo "Time: ".$stats[$off]['Date']." ";
+							if(array_key_exists('Time', $stats[$off])){
+								echo $stats[$off]['Time'];
+							}
+						} 
+						?>
 						</div>
 						<div id="author">
 						<?php

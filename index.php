@@ -31,7 +31,7 @@ $link = "view.php?thread=Main&number=1";
     <input type="submit" value="Mass Edit Posts">
 </form></center>
 <center><form action="parsepage.php">
-    <input type="submit" value="Add From Pages">
+    <input type="submit" value="Parse Pages">
 </form></center>
 <center><form action="gitac.php">
     <input type="submit" value="Commit Changes">
