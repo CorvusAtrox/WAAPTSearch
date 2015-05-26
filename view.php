@@ -195,138 +195,134 @@
 			<?php 
 				$num = ($page - 1)*25 + 1;
 				$off = ($num-1)%1000;
-				for($it = 1;($it <= 25 && array_key_exists(($off),$stats));$it++){ ?>
-					<br>
-					<div id="post">
-					<?php
-						$num = ($page - 1)*25 + $it;
-						$off = ($num-1)%1000;
-						/*echo $num;
-						echo "<br>";
-						echo $ind;
-						echo "<br>";
-						echo $off;*/
+				for($it = 1;$it <= 25;$it++){ 
+					if(array_key_exists($off,$stats)){				
 						?>
-						<div id ="number">
-						<?php
-						echo "Number: ".$num."<br>";?>
-						</div>
-						<div id="date">
-						<?php
-						if(array_key_exists('Date', $stats[$off])){
-							if(array_key_exists('Time', $stats[$off])){
-								$vdate = new DateTime($stats[$off]['Date']." ".$stats[$off]['Time'],new DateTimeZone("UTC"));
-								$vdate->setTimezone(new DateTimeZone($tz));
-								echo "Date/Time: ";
-								echo $vdate->format('Y-m-d H:i:s');
-								//echo "Date/Time: ".$stats[$off]['Date']." ".$stats[$off]['Time'];
-							} else {
-								echo "Date: ".$stats[$off]['Date']." ";
-							}
-						} 
-						?>
-						</div>
-						<div id="author">
-						<?php
-						if(array_key_exists('Author', $stats[$off])){
-							$as = sizeof($stats[$off]['Author']);
-							echo "Author: ";
-							for($a = 0; $a < $as; $a++){
-								if($a == $as - 1){
-									echo $stats[$off]['Author'][$a]."<br>";
-								} else {
-									echo $stats[$off]['Author'][$a].", ";
-								}
-							}
-						} ?>
-						</div>
-						<div id ="arc">
-						<?php
-						if(array_key_exists('Arc', $stats[$off])){
-							$rs = sizeof($stats[$off]['Arc']);
-							echo "Arc: ";
-							for($r = 0; $r < $rs; $r++){
-								if($r == $rs - 1){
-									echo $stats[$off]['Arc'][$r]."<br>";
-								} else {
-									echo $stats[$off]['Arc'][$r].", ";
-								}
-							}
-						} ?>
-						</div>
-						<div id ="locations">
-						<?php
-						if(array_key_exists('Locations', $stats[$off])){
-							$ls = sizeof($stats[$off]['Locations']);
-							echo "Locations: ";
-							for($l = 0; $l < $ls; $l++){
-								if($l == $ls - 1){
-									echo $stats[$off]['Locations'][$l]."<br>";
-								} else {
-									echo $stats[$off]['Locations'][$l].", ";
-								}
-							}
-						} ?>
-						</div>
-						<div id ="plots">
-						<?php
-						if(array_key_exists('Plots', $stats[$off])){
-							$ps = sizeof($stats[$off]['Plots']);
-							echo "Plots: ";
-							for($p = 0; $p < $ps; $p++){
-								if($p == $ps - 1){
-									echo $stats[$off]['Plots'][$p]."<br>";
-								} else {
-									echo $stats[$off]['Plots'][$p].", ";
-								}
-							}
-						}
-						?>
-						</div>
-						<div id ="characters">
-						<?php
-						if(array_key_exists('Characters', $stats[$off])){
-							$cs = sizeof($stats[$off]['Characters']);
-							echo "Characters: ";
-							for($c = 0; $c < $cs; $c++){
-								if($c == $cs - 1){
-									echo $stats[$off]['Characters'][$c]."<br>";
-								} else {
-									echo $stats[$off]['Characters'][$c].", ";
-								}
-							}
-						} ?>
-						</div>
-						<div id ="link">
-						<?php
-						if(array_key_exists('Link', $stats[$off])){
-							echo "<a href='".$stats[$off]['Link']."'>Link to Post</a>";
-							echo "<br>";
-						} ?>
-						</div>
-						<div id= "edit">
-						<?php
-						$edlink = "edit.php?thread=".$name."&number=".$num."&tz=".$tz;
-				
-						echo "<a href='".$edlink."'>Edit Data</a>";
-						?>
-						</div>
-						<?php
-						/*echo "<br>";
-						if(array_key_exists('Text', $stats[$off])){
-							echo "Text:<br>".$stats[$off]['Text']."<br>";
-						}*/
-						echo "<br>"; 
-						?>
-							</div>
-						<?php
-							if(!(array_key_exists(($off+1),$stats))){
-								echo "<br><br>";
-								$addlink = "massadd.php?name=".$name;
-								echo "<a href='".$addlink."'>Add Posts To Thread</a>";
-								break;
-							}
-						}
+						<br>
+							<div id="post">
+								<?php
+									$num = ($page - 1)*25 + $it;
+									$off = ($num-1)%1000;
+									?>
+									<div id ="number">
+									<?php
+									echo "Number: ".$num."<br>";?>
+									</div>
+									<div id="date">
+									<?php
+									if(array_key_exists('Date', $stats[$off])){
+										if(array_key_exists('Time', $stats[$off])){
+											$vdate = new DateTime($stats[$off]['Date']." ".$stats[$off]['Time'],new DateTimeZone("UTC"));
+											$vdate->setTimezone(new DateTimeZone($tz));
+											echo "Date/Time: ";
+											echo $vdate->format('Y-m-d H:i:s');
+											//echo "Date/Time: ".$stats[$off]['Date']." ".$stats[$off]['Time'];
+										} else {
+											echo "Date: ".$stats[$off]['Date']." ";
+										}
+									} 
+									?>
+									</div>
+									<div id="author">
+									<?php
+									if(array_key_exists('Author', $stats[$off])){
+										$as = sizeof($stats[$off]['Author']);
+										echo "Author: ";
+										for($a = 0; $a < $as; $a++){
+											if($a == $as - 1){
+												echo $stats[$off]['Author'][$a]."<br>";
+											} else {
+												echo $stats[$off]['Author'][$a].", ";
+											}
+										}
+									} ?>
+									</div>
+									<div id ="arc">
+									<?php
+									if(array_key_exists('Arc', $stats[$off])){
+										$rs = sizeof($stats[$off]['Arc']);
+										echo "Arc: ";
+										for($r = 0; $r < $rs; $r++){
+											if($r == $rs - 1){
+												echo $stats[$off]['Arc'][$r]."<br>";
+											} else {
+												echo $stats[$off]['Arc'][$r].", ";
+											}
+										}
+									} ?>
+									</div>
+									<div id ="locations">
+									<?php
+									if(array_key_exists('Locations', $stats[$off])){
+										$ls = sizeof($stats[$off]['Locations']);
+										echo "Locations: ";
+										for($l = 0; $l < $ls; $l++){
+											if($l == $ls - 1){
+												echo $stats[$off]['Locations'][$l]."<br>";
+											} else {
+												echo $stats[$off]['Locations'][$l].", ";
+											}
+										}
+									} ?>
+									</div>
+									<div id ="plots">
+									<?php
+									if(array_key_exists('Plots', $stats[$off])){
+										$ps = sizeof($stats[$off]['Plots']);
+										echo "Plots: ";
+										for($p = 0; $p < $ps; $p++){
+											if($p == $ps - 1){
+												echo $stats[$off]['Plots'][$p]."<br>";
+											} else {
+												echo $stats[$off]['Plots'][$p].", ";
+											}
+										}
+									}
+									?>
+									</div>
+									<div id ="characters">
+									<?php
+									if(array_key_exists('Characters', $stats[$off])){
+										$cs = sizeof($stats[$off]['Characters']);
+										echo "Characters: ";
+										for($c = 0; $c < $cs; $c++){
+											if($c == $cs - 1){
+												echo $stats[$off]['Characters'][$c]."<br>";
+											} else {
+												echo $stats[$off]['Characters'][$c].", ";
+											}
+										}
+									} ?>
+									</div>
+									<div id ="link">
+									<?php
+									if(array_key_exists('Link', $stats[$off])){
+										echo "<a href='".$stats[$off]['Link']."'>Link to Post</a>";
+										echo "<br>";
+									} ?>
+									</div>
+									<div id= "edit">
+									<?php
+									$edlink = "edit.php?thread=".$name."&number=".$num."&tz=".$tz;
+							
+									echo "<a href='".$edlink."'>Edit Data</a>";
+									?>
+									</div>
+									<?php
+									/*echo "<br>";
+									if(array_key_exists('Text', $stats[$off])){
+										echo "Text:<br>".$stats[$off]['Text']."<br>";
+									}*/
+									echo "<br>"; 
+									?>
+							</div>	
+								<?php
+					} elseif(($num % 25) == 0){
+						echo "<br><br>";
+						$addlink = "massadd.php?name=".$name;
+						echo "<a href='".$addlink."'>Add Posts To Thread</a>";
+					}
+				} 
 			?>
 			</div>
 			<?php
