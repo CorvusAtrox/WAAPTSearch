@@ -17,7 +17,15 @@
 	$newstat['Thread'] = $_POST["thread"];
 	$newstat['Number'] = $_POST["number"];
 	if($_POST["date"]){
-		$newstat['Date'] = $_POST["date"];
+		if($_POST["time"]){
+			$vdate = new DateTime($_POST["date"]." ".$_POST["time"],new DateTimeZone($_POST["tz"]));
+			$vdate->setTimezone(new DateTimeZone("UTC"));
+			$newstat['Date'] = $vdate->format('Y-m-d');
+			$newstat['Time'] = $vdate->format('H:i:s');
+		} else {
+			$newstat['Date'] = $_POST["date"];
+			unset($newstat['Time']);
+		}
 	}
 	if($_POST["author"]){
 		$newstat['Author'] = array_filter($_POST["author"]);

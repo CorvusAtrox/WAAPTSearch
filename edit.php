@@ -20,6 +20,7 @@ Note: All dates should be in UTC for now
 $name = "";
 $num = "";
 $date = "";
+$time = "";
 $ind = -1;
 $link = "";
 $text = "";
@@ -128,9 +129,21 @@ Timezone:<br>
 	}
 ?>
 </select>
+<?php
+if(array_key_exists('Time', $stats[$off])){
+	$vdate = new DateTime($stats[$off]['Date']." ".$stats[$off]['Time'],new DateTimeZone("UTC"));
+	$vdate->setTimezone(new DateTimeZone($tz));
+	$date = $vdate->format('Y-m-d');
+	$time = $vdate->format('H:i:s');
+	//echo "Date/Time: ".$stats[$off]['Date']." ".$stats[$off]['Time'];
+}
+?>
 <br>
 Date (YYYY-MM-DD):<br>
 <input type="text" name="date" value="<?= $date ?>" />
+<br>
+Time (HH:MM:SS):<br>
+<input type="text" name="time" value="<?= $time ?>" />
 <br>
 Author:<br>
 <div id="authors">
