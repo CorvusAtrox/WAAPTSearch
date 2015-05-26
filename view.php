@@ -306,7 +306,7 @@
 						</div>
 						<div id= "edit">
 						<?php
-						$edlink = "edit.php?thread=".$name."&number=".$num;
+						$edlink = "edit.php?thread=".$name."&number=".$num."&tz=".$tz;
 				
 						echo "<a href='".$edlink."'>Edit Data</a>";
 						?>

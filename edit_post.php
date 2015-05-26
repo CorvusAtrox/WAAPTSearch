@@ -73,11 +73,11 @@
 		
 		if($key === null){
 			//array_push($stats,array_filter($newstat));
-			$redir = "view.php?thread=".$_POST["thread"]."&page=1";
+			$redir = "view.php?thread=".$_POST["thread"]."&page=1"."&tz=".$_POST["tz"];
 		} else {
 			$stats[$key] = $newstat;
 			$page = (int)(($_POST["number"] - 1) / 25)+1;
-			$redir = "view.php?thread=".$_POST["thread"]."&page=".$page;
+			$redir = "view.php?thread=".$_POST["thread"]."&page=".$page."&tz=".$_POST["tz"];
 		}
 		//$stats[0] = $newstat;
 

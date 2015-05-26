@@ -38,6 +38,12 @@ if(isset($_GET["thread"]) && isset($_GET["number"])){
 	$name = $_GET["thread"];
 	$num = $_GET["number"];
 	
+	if(isset($_GET["tz"])){
+		$tz = $_GET["tz"];
+	} else {
+		$tz = "UTC";
+	}
+	
 	$ind = (int) (($num-1)/1000);
 	$off = ($num - 1) % 1000;
 	
@@ -108,6 +114,20 @@ Thread:<br>
 <br>
 Post Number:<br>
 <input type="text" name="number" value="<?= $num ?>" />
+<br>
+Timezone:<br>
+<select type="text" name = "tz">
+<?php
+	$lines = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
+	foreach($lines as $zone){
+		if($tz == $zone){
+			echo "<option value=\"".$zone."\" selected>".$zone."</option>";
+		} else {
+			echo "<option value=\"".$zone."\">".$zone."</option>";
+		}
+	}
+?>
+</select>
 <br>
 Date (YYYY-MM-DD):<br>
 <input type="text" name="date" value="<?= $date ?>" />
