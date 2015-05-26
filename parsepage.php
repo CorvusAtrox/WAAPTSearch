@@ -17,7 +17,12 @@
 
 set_time_limit(0);
 
-for($page = 1;$page <= 40;$page++){
+$to = $_POST['to'];
+$from = $_POST['from'];
+
+if(isset($_POST['to']) && isset($_POST['from'])){
+
+for($page = $from;$page <= $to;$page++){
 
 $ind = (int)(($page-1)/40);
 
@@ -45,14 +50,14 @@ for($i = 791;$i < $cons;$i++){
 	if (strpos($content[$i],'<a style="float:right;font-size:0.9em"') !== false) {
 		$hl = strip_tags($content[$i]);
 		//echo $hl;
-		preg_match('#[0-9]+\s[a-zA-Z0-9]+[0-9]{1,2}(st|nd|rd|th)\s[a-zA-Z]{3} (20)[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}#', $hl, $nump);
+		preg_match('#[0-9]+\s[A-Za-z0-9_-]+[0-9]{1,2}(st|nd|rd|th)\s[a-zA-Z]{3} (20)[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}#', $hl, $nump);
 		preg_match('#^[0-9]+#', $nump[0], $num);
 		//echo $num[0];
 		//echo "";
-		preg_match('#[a-zA-Z0-9]+( post on )[0-9]{1,2}(st|nd|rd|th)\s[a-zA-Z]{3}\s(20)[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2}\s(AM|PM)#', $content[$i], $match);
+		preg_match('#[A-Za-z0-9_-]+( post on )[0-9]{1,2}(st|nd|rd|th)\s[a-zA-Z]{3}\s(20)[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2}\s(AM|PM)#', $content[$i], $match);
 		$sct = $match[0];
 		//echo $sct;
-		preg_match('#^[a-zA-Z0-9]+#', $sct, $auth);
+		preg_match('#^[A-Za-z0-9_-]+#', $sct, $auth);
 		preg_match('#[0-9]{1,2}(st|nd|rd|th)\s[a-zA-Z]{3}\s(20)[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2}\s(AM|PM)#', $sct, $datim);
 		//echo " ";
 		//echo $auth[0];
@@ -69,13 +74,18 @@ for($i = 791;$i < $cons;$i++){
 		//echo "<br>";
 		//[0-9]+\s[a-zA-Z0-9]+[0-9]+(st|nd|rd|th)\s[a-zA-Z]{3}\s20[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2}\s(AM|PM)
 		$off = ($num[0]-1)%1000;
-		$stats[$off]['Author'][0] = $auth[0];
-		$stats[$off]['Date'] = $pdate->format('Y-m-d');
-		$stats[$off]['Time'] = $pdate->format('H:i:s');
-		$stats[$off]['Link'] = 'http://tvtropes.org/pmwiki/posts.php?discussion=12971269370A74820100&page='.$page.'#'.$num[0];
+		if(array_key_exists(($off),$stats)){
+			$stats[$off]['Author'][0] = $auth[0];
+			$stats[$off]['Date'] = $pdate->format('Y-m-d');
+			$stats[$off]['Time'] = $pdate->format('H:i:s');
+			$stats[$off]['Link'] = 'http://tvtropes.org/pmwiki/posts.php?discussion=12971269370A74820100&page='.$page.'#'.$num[0];
+		}
 	}
 }
 
+if(array_key_exists(-1,$stats)){
+	unset($stats[-1]);
+}
 
 $jen = json_encode($stats);
 		
@@ -104,7 +114,10 @@ fwrite($myfile, $new_json);
 fclose($myfile);
 rename("data/Main".$ind.".json.new","data/Main".$ind.".json");
 	}
+}
 
+header('Location: index.php');
+die();
 ?>
 
 </body>

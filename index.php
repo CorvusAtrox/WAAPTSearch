@@ -30,7 +30,7 @@ $link = "view.php?thread=Main&number=1";
 <center><form action="massedit.php">
     <input type="submit" value="Mass Edit Posts">
 </form></center>
-<center><form action="parsepage.php">
+<center><form action="parse.php">
     <input type="submit" value="Parse Pages">
 </form></center>
 <center><form action="gitac.php">

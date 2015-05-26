@@ -127,6 +127,11 @@
 	} else {
 		$page = $_GET["page"];
 	}
+	if(empty($_GET["tz"])){
+		$tz = "UTC";
+	} else {
+		$tz = $_GET["tz"];
+	}
 	
 	$ind = (int) (($page-1)/40);
 	
@@ -152,6 +157,20 @@
 			<br>
 			Page:<br>
 			<input type="text" name="page" value="<?= $page ?>" />
+			<br>
+			Timezone:<br>
+			<select type="text" name = "tz">
+			<?php
+				$lines = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
+				foreach($lines as $zone){
+					if($tz == $zone){
+						echo "<option value=\"".$zone."\" selected>".$zone."</option>";
+					} else {
+						echo "<option value=\"".$zone."\">".$zone."</option>";
+					}
+				}
+			?>
+			</select>
 			<br><br><input type="submit" value="Go To">
 			</form></center>
 			<center><form action="index.php">
@@ -160,14 +179,14 @@
 			</div>
 			<div id="prev">
 			<?php if($page > 1){
-				$link_address = "view.php?thread=".$name."&page=".($page-1);
+				$link_address = "view.php?thread=".$name."&page=".($page-1)."&tz=".$tz;
 				echo "<a href='".$link_address."'>Previous Page</a>";
 				echo "<br>";
 			} ?>
 			</div>
 			<div id="next">
 			<?php
-				$link_address = "view.php?thread=".$name."&page=".($page+1);
+				$link_address = "view.php?thread=".$name."&page=".($page+1)."&tz=".$tz;
 				echo "<a href='".$link_address."'>Next Page</a>";
 				echo "<br>";
 			 ?>
@@ -195,9 +214,14 @@
 						<div id="date">
 						<?php
 						if(array_key_exists('Date', $stats[$off])){
-							echo "Date/Time: ".$stats[$off]['Date']." ";
 							if(array_key_exists('Time', $stats[$off])){
-								echo $stats[$off]['Time'];
+								$vdate = new DateTime($stats[$off]['Date']." ".$stats[$off]['Time'],new DateTimeZone("UTC"));
+								$vdate->setTimezone(new DateTimeZone($tz));
+								echo "Date/Time: ";
+								echo $vdate->format('Y-m-d H:i:s');
+								//echo "Date/Time: ".$stats[$off]['Date']." ".$stats[$off]['Time'];
+							} else {
+								echo "Date: ".$stats[$off]['Date']." ";
 							}
 						} 
 						?>
