@@ -13,8 +13,6 @@
 
 <center><font size = 120%>Edit Post Data</font></center>
 
-Note: All dates should be in UTC for now
-
 <?php
 
 $name = "";
