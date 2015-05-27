@@ -61,9 +61,9 @@ for($i = 1;$i < $cons;$i++){
 			$nu = $b;
 		}
 		echo $num[0]." ";
-		preg_match('#by [a-zA-Z0-9_!-]+#', $hl, $auth);
+		preg_match('#by (The Grey Fox|\[insert username here\]|[a-zA-Z0-9_!-]+)#', $hl, $auth);
 		echo substr($auth[0],3)." ";
-		preg_match('#[a-zA-Z0-9_!-]+ 20[0-9]{2}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}#', $hl, $datim);
+		preg_match('#(The Grey Fox|\[insert username here\]|[a-zA-Z0-9_!-]+) 20[0-9]{2}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}#', $hl, $datim);
 		echo substr($datim[0],-19)." ";
 		/*preg_match('#[A-Za-z0-9_-]+( post on )[0-9]{1,2}(st|nd|rd|th)\s[a-zA-Z]{3}\s(20)[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2}\s(AM|PM)#', $content[$i], $match);
 		$sct = $match[0];

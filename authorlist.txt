@@ -4,8 +4,8 @@ Runic: Runic
 Daisy: daisy, queenyclone, Littlequeen, Lilqueendaisy
 Siranae: Siranae
 Crack: ACrackInTime
-Pent: Pentigan
-Tracer: TheGinkei, TracerBullet
+Pent: Pentigan, The Grey Fox
+Tracer: TheGinkei, TracerBullet, SpitefulMurkrow
 Shichi: Shichibukai
 Anom: Anomalocaris20
 Tagg: rmctagg09
@@ -49,8 +49,8 @@ Straw: strawberryflavored
 OuRex: OuRex
 Star: stargirl93
 Tangent: Tangent128
-Every: memyselfandI2
-Silent: SilentReverence
+Every: memyselfandI2, memyselfandI
+Silent: SilentReverence, VeniaSilente
 Katsuun: Katsuun
 Gear: GearLeader
 Dixnerf: Dixnerf
@@ -118,16 +118,16 @@ CAPSLOCK: CAPSLOCK
 Magic: ForMagic
 Keys: keys2tkingdom
 Dalek: PurpleDalek
-Dune: 0blivionmobile, DuneTheWanderer
+Dune: 0blivionmobile, DuneTheWanderer, 0blivion!Dune
 Mysterion: Mysterion
 KOG: kingofgames010
-Wasp: ButNotLeast, ChromaticWasp
+Wasp: ButNotLeast, ChromaticWasp, [insert username here]
 Hybrid: THybrid21
 Uill: Uilleam
 Mint: Helpful_Mint
 Mobile: MobileLeprechaun
 Morgi: Morgikit
-Marin: ChaoticMarin
+Marin: ChaoticMarin, Marinite
 Sebby: sebbymoran
 NES: NesClassic
 Hooba: HoobaDooba
