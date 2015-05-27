@@ -11,14 +11,14 @@
 <body bgcolor="#CE3DFF" text="000000">
 <font face="Times New Roman"</font>
 
-<center><font size = 120%>Parse Page</font></center>
+<center><font size = 120%>Spoilertext</font></center>
 
 <?php
 
 set_time_limit(0);
 
-$from = 6667;
-$to = 18251;
+$from = $_GET["from"];
+$to = $_GET["to"];
 
 //1-2012: None
 
@@ -41,8 +41,8 @@ $cons = sizeof($content);
 //echo "<br><br>";
 
 for($i = 1;$i < $cons;$i++){
-	if (strpos($content[$i],'spag') !== false) {
-		echo " YES";
+	if((strpos($content[$i],'class="spoiler"') !== false)){
+		echo strip_tags($content[$i])."<br>";
 	}
 }
 
