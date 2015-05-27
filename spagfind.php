@@ -17,10 +17,11 @@
 
 set_time_limit(0);
 
-$from = 2013;
+$from = 6667;
 $to = 18251;
 
 //1-2012: None
+
 
 
 for($page = $from;$page <= $to;$page++){
