@@ -33,9 +33,9 @@ $link = "view.php?thread=Main&number=1";
 <center><form action="parse.php">
     <input type="submit" value="Parse Pages">
 </form></center>
-<center><form action="list.php">
+<!--<center><form action="list.php">
     <input type="submit" value="Lists">
-</form></center>
+</form></center>-->
 <center><form action="gitac.php">
     <input type="submit" value="Commit Changes">
 </form></center>
