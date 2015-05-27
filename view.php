@@ -37,9 +37,10 @@
 	position: relative;
     left: 0px;
 	top: -25px;
-	height:80px;
 	border-radius: 25px;
     border: 2px solid #008000;
+	height: 80px;
+	overflow: auto;
 }
 #number {
 	text-align:center;
