@@ -13,7 +13,7 @@
 
 <center><font size = 120%>Get Spoilertext</font></center>
 
-<center><form action="spoilerfind.php" method="post">
+<center><form action="spoilerfind.php" method="get">
 <!--Thread:<br>
 <select type="text" name = "thread">
 	<?php 
