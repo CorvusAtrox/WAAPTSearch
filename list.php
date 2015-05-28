@@ -22,7 +22,7 @@
 	
 	$name = file("threadlist.txt", FILE_IGNORE_NEW_LINES);
 	$ns = sizeof($name);
-	$ns = 1;
+	//$ns = 1;
 	
 	$authdate = array();
 	$authdate[0][0] = "Date";
@@ -94,13 +94,15 @@
 				$vdate = new DateTime($stats[$off]['Date']." ".$stats[$off]['Time'],new DateTimeZone("UTC"));
 				$vdate->setTimezone(new DateTimeZone("America/Chicago"));
 				$vd = $vdate->format('Y-m-d');
-				$key = array_search(strtolower($stats[$off]['Author'][0]), $handle);
 				//echo strtolower($stats[$off]['Author'][0])." ";
 				$diff = date_diff(date_create("2011-02-07",timezone_open("America/Chicago")),$vdate);
 				$df = ($diff->days)+1;
-				$authdate[($df)][($key+1)]++;
+				for($an = 0; $an < sizeOf($stats[$off]['Author']);$an++){
+					$key = array_search(strtolower($stats[$off]['Author'][$an]), $handle);
+					$authdate[($df)][($key+1)]++;
+				}
 				echo $name[$n]." ".$stats[$off]['Number']." ";
-				echo $vd." ".$authdate[0][($key+1)]."<br>";
+				//echo $vd." ".$authdate[0][($key+1)]."<br>";
 			}
 			
 			//echo $i." ".$off."<br>";
