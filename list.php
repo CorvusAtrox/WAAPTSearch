@@ -100,6 +100,7 @@
 				for($an = 0; $an < sizeOf($stats[$off]['Author']);$an++){
 					$key = array_search(strtolower($stats[$off]['Author'][$an]), $handle);
 					$authdate[($df)][($key+1)]++;
+					echo ". ";
 				}
 				echo $name[$n]." ".$stats[$off]['Number']." ";
 				//echo $vd." ".$authdate[0][($key+1)]."<br>";
