@@ -52,7 +52,7 @@ for($i = 1;$i < $cons;$i++){
 	if (strpos($content[$i],'<h3 class="hn post-ident">') !== false) {
 		//echo $content[$i]." ";
 		$hl = strip_tags($content[$i]);
-		//echo $hl;
+		//echo $hl." ";
 		//preg_match('#[0-9]+\s[A-Za-z0-9_-]+[0-9]{1,2}(st|nd|rd|th)\s[a-zA-Z]{3} (20)[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}#', $hl, $nump);
 		preg_match('#([1-9],[0-9]{3}|[0-9]+)#', $hl, $num);
 		$b = str_replace( ',', '', $num[0] );
@@ -63,7 +63,12 @@ for($i = 1;$i < $cons;$i++){
 		echo $num[0]." ";
 		preg_match('#by (The Grey Fox|\[insert username here\]|[a-zA-Z0-9_!-]+)#', $hl, $auth);
 		echo substr($auth[0],3)." ";
-		preg_match('#(The Grey Fox|\[insert username here\]|[a-zA-Z0-9_!-]+) 20[0-9]{2}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}#', $hl, $datim);
+		preg_match('#(The Grey Fox|\[insert username here\]|[a-zA-Z0-9_!-]+) (Today|Yesterday|20[0-9]{2}-[0-9]{2}-[0-9]{2}) [0-9]{2}:[0-9]{2}:[0-9]{2}#', $hl, $datim);
+		$tod = new DateTime();
+		$yest = new DateTime();
+		$yest->sub(new DateInterval('P1D'));
+		$datim[0] = str_replace("Today",$tod->format('Y-m-d'),$datim[0]);
+		$datim[0] = str_replace("Yesterday",$yest->format('Y-m-d'),$datim[0]);
 		echo substr($datim[0],-19)." ";
 		/*preg_match('#[A-Za-z0-9_-]+( post on )[0-9]{1,2}(st|nd|rd|th)\s[a-zA-Z]{3}\s(20)[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2}\s(AM|PM)#', $content[$i], $match);
 		$sct = $match[0];
