@@ -33,6 +33,9 @@ $link = "view.php?thread=Main&number=1";
 <center><form action="parse.php">
     <input type="submit" value="Parse Pages">
 </form></center>
+<center><form action="charparse.php">
+    <input type="submit" value="Parse for Characters">
+</form></center>
 <!--<center><form action="list.php">
     <input type="submit" value="Lists">
 </form></center>-->
