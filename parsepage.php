@@ -46,7 +46,7 @@ $cons = sizeof($content);
 //echo $content[791];
 //echo "<br><br>";
 
-for($i = 791;$i < $cons;$i++){
+for($i = 1;$i < $cons;$i++){
 	if (strpos($content[$i],'<a style="float:right;font-size:0.9em"') !== false) {
 		$hl = strip_tags($content[$i]);
 		//echo $hl;
